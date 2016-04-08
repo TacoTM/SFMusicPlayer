@@ -30,8 +30,8 @@ void Player::createList()
 	{
 		Tile newTile;
 		newTile.songID = (*i);
-		newTile.rect.setSize(sf::Vector2f(260, 50));
-		newTile.rect.setPosition(20, initialY);
+		newTile.rect.setSize(sf::Vector2f(298, 50));
+		newTile.rect.setPosition(1, initialY);
 		newTile.Label.setPosition(newTile.rect.getPosition().x, (newTile.rect.getPosition().y) / (3));
 		newTile.setFont(mFont);
 		newTile.setText(*i);
@@ -69,6 +69,7 @@ void Player::Start()
 			if (event.type == sf::Event::Closed)
 				window.close();
 		}
+		scrollText();
 
 
 		window.clear(sf::Color::White);
@@ -83,4 +84,16 @@ void Player::Start()
 
 	}
 }
+
+void Player::scrollText()
+{
+	for (auto i = Tiles.begin(); i != Tiles.end(); ++i)
+	{
+		if ((*i).mouseIntersects((*i).rect.getPosition(),(*i).rect.getSize(),window))
+		{
+			cout << "Mouse is hovering over" << endl;
+		}
+	}
+}
+
 

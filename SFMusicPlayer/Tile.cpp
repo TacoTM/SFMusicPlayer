@@ -19,3 +19,13 @@ void Tile::setFont(sf::Font &needFont)
 {
 	this->Label.setFont(needFont);
 }
+
+bool Tile::mouseIntersects(sf::Vector2f position, sf::Vector2f size, sf::RenderWindow  &wnd)
+{
+	if (sf::Mouse::getPosition(wnd).x >= position.x && sf::Mouse::getPosition(wnd).x <= size.x
+		&& sf::Mouse::getPosition(wnd).y >= position.y && sf::Mouse::getPosition(wnd).y <= size.y)
+	{
+		return true;
+	}
+	return false;
+}

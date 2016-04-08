@@ -19,6 +19,7 @@ public:
 	void LoadFiles(vector<string> &FileNames);
 	void createList();
 	void Start();
+	void scrollText();
 private:
 	vector<std::string> Files;
 	vector <Tile> Tiles;
