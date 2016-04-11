@@ -42,6 +42,8 @@ void Player::createList()
 		newTile.rect.setOutlineThickness(1);
 		newTile.backgroundRect.setSize(sf::Vector2f(270, 60));
 		newTile.backgroundRect.setFillColor(sf::Color(0, 0, 0, 50));
+		newTile.bBox.height = newTile.rect.getSize().y;
+		newTile.bBox.width = newTile.rect.getSize().x;
 		initialY += 80;
 		Tiles.push_back(newTile);
 	}
@@ -57,7 +59,7 @@ void Player::Start()
 		cout << "Song: " << *i << endl;
 	
 	createList();
-	//Assign a song to one of the strings in the vector
+	
 
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
@@ -68,8 +70,9 @@ void Player::Start()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+
 		}
-		scrollText();
+
 
 
 		window.clear(sf::Color::White);
@@ -79,20 +82,10 @@ void Player::Start()
 			window.draw((*i).backgroundRect);
 			window.draw((*i).rect);
 			window.draw((*i).Label);
+			(*i).Update(window, event);
 		}
 		window.display();
 
-	}
-}
-
-void Player::scrollText()
-{
-	for (auto i = Tiles.begin(); i != Tiles.end(); ++i)
-	{
-		if ((*i).mouseIntersects((*i).rect.getPosition(),(*i).rect.getSize(),window))
-		{
-			cout << "Mouse is hovering over" << endl;
-		}
 	}
 }
 

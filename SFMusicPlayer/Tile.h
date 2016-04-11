@@ -7,14 +7,20 @@ using namespace std;
 class Tile
 {
 public:
+	Tile();
 	void setText(string &text);
 	void updateTextPosition();
-	void setFont(sf::Font &needFont);
-	bool mouseIntersects(sf::Vector2f position, sf::Vector2f size, sf::RenderWindow &wnd);
+	void setFont(sf::Font &needFont);;
+	enum state {HOVERED, NORMAL};
+	void Update(sf::RenderWindow &wnd, sf::Event &e);
 	sf::RectangleShape rect;
 	sf::RectangleShape backgroundRect;
 	sf::FloatRect bBox;
 	string songID;
 	sf::Text Label;
+	bool inView;
+	bool playMusic;
+private:
+	state mButtonStates;
 
 };

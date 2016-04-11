@@ -3,6 +3,11 @@
 
 
 
+Tile::Tile()
+{
+	mButtonStates = state::NORMAL;
+}
+
 void Tile::setText(string & text)
 {
 	this->Label.setString(text);
@@ -20,12 +25,31 @@ void Tile::setFont(sf::Font &needFont)
 	this->Label.setFont(needFont);
 }
 
-bool Tile::mouseIntersects(sf::Vector2f position, sf::Vector2f size, sf::RenderWindow  &wnd)
+
+void Tile::Update(sf::RenderWindow & wnd, sf::Event &e)
 {
-	if (sf::Mouse::getPosition(wnd).x >= position.x && sf::Mouse::getPosition(wnd).x <= size.x
-		&& sf::Mouse::getPosition(wnd).y >= position.y && sf::Mouse::getPosition(wnd).y <= size.y)
-	{
-		return true;
-	}
-	return false;
+	sf::Vector2i m_mousePosition = sf::Mouse::getPosition(wnd);
+
+	
+
+	int mouseX = sf::Mouse::getPosition(wnd).x;
+	int mouseY = sf::Mouse::getPosition(wnd).y;
+
+	bool mouseInButton = rect.getGlobalBounds().contains(mouseX, mouseY);
+
+		/*(mouseX > rect.getPosition().x && mouseY > rect.getPosition().y &&
+		mouseX < (rect.getPosition().x + rect.getSize().x) &&
+		mouseY < (rect.getPosition().y + rect.getSize().y));
+		*/
+
+	if (e.type == sf::Event::MouseMoved)
+		if (mouseInButton)
+			mButtonStates = state::HOVERED;
+		else
+			mButtonStates = state::NORMAL;
+	if (e.type == sf::Event::MouseButtonPressed)
+
+	//Mouse Event debug
+	if (mButtonStates == HOVERED)
+		cout << "Button is being hovered on: " << songID << endl;
 }
