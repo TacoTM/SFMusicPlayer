@@ -10,7 +10,8 @@ public:
 	Tile();
 	void setText(string &text);
 	void updateTextPosition();
-	void setFont(sf::Font &needFont);;
+	void setFont(sf::Font &needFont);
+	void setPosition(float x, float y);
 	enum state {HOVERED, NORMAL};
 	void Update(sf::RenderWindow &wnd, sf::Event &e);
 	sf::RectangleShape rect;
@@ -19,7 +20,9 @@ public:
 	string songID;
 	sf::Text Label;
 	bool inView;
-	bool playMusic;
+	bool Play;
+	bool isPlaying;
+	bool active;
 private:
 	state mButtonStates;
 

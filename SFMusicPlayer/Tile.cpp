@@ -13,11 +13,11 @@ void Tile::setText(string & text)
 	this->Label.setString(text);
 }
 
-//Only will be called on app loading, and when scrolling is initiated
+//Only will be called on app loading
 void Tile::updateTextPosition()
 {
-	this->Label.setPosition(this->rect.getPosition().x + 10, (this->rect.getPosition().y) + (this->rect.getSize().y)/(3));
-	this->backgroundRect.setPosition(this->rect.getPosition());
+	Label.setPosition(rect.getPosition().x + 10, (rect.getPosition().y) + (rect.getSize().y)/(3));
+	backgroundRect.setPosition(rect.getPosition());
 }
 
 void Tile::setFont(sf::Font &needFont)
@@ -25,12 +25,22 @@ void Tile::setFont(sf::Font &needFont)
 	this->Label.setFont(needFont);
 }
 
+void Tile::setPosition(float x, float y)
+{
+	rect.setPosition(x, y);
+	Label.setPosition(rect.getPosition().x + 10, (rect.getPosition().y) + (rect.getSize().y) / (3));
+	backgroundRect.setPosition(rect.getPosition());
+}
+
 
 void Tile::Update(sf::RenderWindow & wnd, sf::Event &e)
 {
 	sf::Vector2i m_mousePosition = sf::Mouse::getPosition(wnd);
 
-	
+	if (rect.getPosition().y < 100)
+		active = false;
+	else
+		active = true;
 
 	int mouseX = sf::Mouse::getPosition(wnd).x;
 	int mouseY = sf::Mouse::getPosition(wnd).y;
@@ -48,8 +58,7 @@ void Tile::Update(sf::RenderWindow & wnd, sf::Event &e)
 		else
 			mButtonStates = state::NORMAL;
 	if (e.type == sf::Event::MouseButtonPressed)
-
-	//Mouse Event debug
-	if (mButtonStates == HOVERED)
-		cout << "Button is being hovered on: " << songID << endl;
+		if(active == true)
+		if (mButtonStates == HOVERED)
+			Play = true;
 }

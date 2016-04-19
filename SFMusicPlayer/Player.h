@@ -19,12 +19,21 @@ public:
 	void LoadFiles(vector<string> &FileNames);
 	void createList();
 	void Start();
-	void scrollText();
+	void scrollTiles(bool Up); // If Up is true move move tiles up, ifnot move down
+	void createHeader();
 private:
 	vector<std::string> Files;
 	vector <Tile> Tiles;
 	sf::RenderWindow window;
 	float initialY = 100;
 	sf::Font mFont;
+	sf::Music currentSong;
+	sf::RectangleShape infoBox;
+	sf::CircleShape playButton;
+	sf::Texture playTexture;
+	sf::Texture pauseTexture;
+	sf::RectangleShape volumeBar;
+	sf::CircleShape volumeSlider;
+	sf::ContextSettings settings;
 };
 
