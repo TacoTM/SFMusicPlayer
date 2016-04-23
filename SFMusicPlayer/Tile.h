@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 #include<SFML\Graphics.hpp>
-
+#include<SFML\Audio.hpp>
 using namespace std;
 
 class Tile
@@ -23,6 +23,7 @@ public:
 	bool Play;
 	bool isPlaying;
 	bool active;
+	bool finished;
 private:
 	state mButtonStates;
 

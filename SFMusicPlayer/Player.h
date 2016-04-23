@@ -21,6 +21,8 @@ public:
 	void Start();
 	void scrollTiles(bool Up); // If Up is true move move tiles up, ifnot move down
 	void createHeader();
+	void drawObjects(sf::Event &event);
+	void inputChecks(sf::Event &event, sf::RenderWindow &window);
 private:
 	vector<std::string> Files;
 	vector <Tile> Tiles;
@@ -35,5 +37,6 @@ private:
 	sf::RectangleShape volumeBar;
 	sf::CircleShape volumeSlider;
 	sf::ContextSettings settings;
+	int nextSong;
 };
 

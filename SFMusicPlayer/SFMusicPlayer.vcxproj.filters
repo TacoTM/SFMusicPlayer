@@ -37,5 +37,8 @@
     <Font Include="..\..\..\..\..\Desktop\Fonts\Track.ttf">
       <Filter>Resource Files</Filter>
     </Font>
+    <Font Include="..\Debug\Mido.otf">
+      <Filter>Resource Files</Filter>
+    </Font>
   </ItemGroup>
 </Project>

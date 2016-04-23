@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Desktop\Fonts\Track.ttf" />
+    <Font Include="..\Debug\Mido.otf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
