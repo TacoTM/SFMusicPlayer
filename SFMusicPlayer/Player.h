@@ -16,18 +16,18 @@ public:
 	Player();
 	~Player();
 
+	//Main Tasks
 	void LoadFiles(vector<string> &FileNames);
 	void createList();
-	void Start();
+	void Start(sf::RenderWindow &window);
 	void scrollTiles(bool Up); // If Up is true move move tiles up, ifnot move down
 	void createHeader();
-	void drawObjects(sf::Event &event);
+	void drawObjects(sf::Event &event, sf::RenderWindow &window);
 	void inputChecks(sf::Event &event, sf::RenderWindow &window);
-private:
 	vector<std::string> Files;
 	vector <Tile> Tiles;
-	sf::RenderWindow window;
-	float initialY = 100;
+	
+	//Graphical Elements
 	sf::Font mFont;
 	sf::Music currentSong;
 	sf::RectangleShape infoBox;
@@ -36,7 +36,13 @@ private:
 	sf::Texture pauseTexture;
 	sf::RectangleShape volumeBar;
 	sf::CircleShape volumeSlider;
-	sf::ContextSettings settings;
+	sf::CircleShape playButtonBG;
+	sf::RectangleShape volumberBarBG;
+	sf::CircleShape volumeSliderBG;
+	sf::CircleShape overlapPlay;
+	sf::RectangleShape divider;
+	//Variables
 	int nextSong;
+	float initialY = 100;
 };
 
